@@ -14,12 +14,8 @@ const Banner = () => {
               Find Your Dream <br /> Job Today
             </h1>
             <div className="Search-box">
-              
-
               <div className="all-buttons-container mt-5">
                 <div className="search-input small-box">
-                 
-
                   <p>
                     <FaSearch color="gray" fontSize="1.5em" />
                   </p>
