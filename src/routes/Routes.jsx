@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Services from "../pages/Services/Services";
 import AddJob from "../pages/AddJob/AddJob";
 import MyJobs from "../pages/MyJobs/MyJobs";
+import Login from "../pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -38,10 +39,10 @@ const router = createBrowserRouter([
       //       </PrivateRoute>
       //     ),
       //   },
-      //   {
-      //     path: "login",
-      //     element: <Login></Login>,
-      //   },
+        {
+          path: "login",
+          element: <Login/>
+        },
       //   {
       //     path: "register",
       //     element: <Register></Register>,

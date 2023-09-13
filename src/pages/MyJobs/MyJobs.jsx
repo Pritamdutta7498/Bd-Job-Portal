@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 // import { useContext } from "react";
 // import { AuthContext } from "../../provider/AuthProvider";
 import Table from "react-bootstrap/Table";
@@ -10,43 +10,43 @@ import Modal from "react-bootstrap/Modal";
 import UpdateJobModal from "../UpdateJobModal/UpdateJobModal"
 
 const MyJobs = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [modalShow, setModalShow] = React.useState(false);
-  const [control, setControl] = useState(false);
-  useEffect(() => {
-    fetch(`http://localhost:5000/myJobs/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setJobs(data);
-      });
-  }, [user, control]);
-  const handleSearch = () => {
-    fetch(`http://localhost:5000/getJobsByText/${searchText}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setJobs(data);
-      });
-  };
+  // const [searchText, setSearchText] = useState("");
+  // const [modalShow, setModalShow] = React.useState(false);
+  // const [control, setControl] = useState(false);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/myJobs/${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setJobs(data);
+  //     });
+  // }, [user, control]);
+  // const handleSearch = () => {
+  //   fetch(`http://localhost:5000/getJobsByText/${searchText}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setJobs(data);
+  //     });
+  // };
 
-  const handleJobUpdate = (data) => {
-    console.log(data);
-    fetch(`http://localhost:5000/updateJob/${data._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.modifiedCount > 0) {
-          setControl(!control);
-        }
-        console.log(result);
-      });
-  };
+  // const handleJobUpdate = (data) => {
+  //   console.log(data);
+  //   fetch(`http://localhost:5000/updateJob/${data._id}`, {
+  //     method: "PUT",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       if (result.modifiedCount > 0) {
+  //         setControl(!control);
+  //       }
+  //       console.log(result);
+  //     });
+  // };
 
   return (
     <div>
@@ -58,7 +58,8 @@ const MyJobs = () => {
             type="text"
             className="p-1"
           />{" "}
-          <button onClick={handleSearch}>Search</button>
+          {/* onClick={handleSearch} */}
+          <button >Search</button>
         </div>
         <Table striped bordered hover className="container">
           <thead>
