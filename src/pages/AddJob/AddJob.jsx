@@ -9,7 +9,7 @@ const AddJob = () => {
   const [user] = useState([]); // remove the line--
 
   // const { user } = useContext(AuthContext);
-  // const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const {
     register,
@@ -31,16 +31,16 @@ const AddJob = () => {
       });
     console.log(data);
   };
-  // const options = [
-  //   { value: "JavaScript", label: "JavaScript" },
-  //   { value: "C++", label: "C++" },
-  //   { value: "HTML", label: "HTML" },
-  //   { value: "CSS", label: "CSS" },
-  //   { value: "React", label: "React" },
-  //   { value: "Node", label: "Node" },
-  //   { value: "MongoDB", label: "MongoDB" },
-  //   { value: "Redux", label: "Redux" },
-  // ];
+  const options = [
+    { value: "JavaScript", label: "JavaScript" },
+    { value: "C++", label: "C++" },
+    { value: "HTML", label: "HTML" },
+    { value: "CSS", label: "CSS" },
+    { value: "React", label: "React" },
+    { value: "Node", label: "Node" },
+    { value: "MongoDB", label: "MongoDB" },
+    { value: "Redux", label: "Redux" },
+  ];
   //   console.log(user);
 
   return (
@@ -98,7 +98,14 @@ const AddJob = () => {
               placeholder="your email"
               type="email"
             />
-            
+            <CreatableSelect
+              className="w-75"
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={options}
+              placeholder="select skill"
+              isMulti
+            />
             <input
               className="text-input"
               {...register("description")}
