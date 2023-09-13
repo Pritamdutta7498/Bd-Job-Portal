@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./AddJob.css";
 import CreatableSelect from "react-select/creatable";
+import Select from 'react-select';
 // import { AuthContext } from "../../provider/AuthProvider";
 
 const AddJob = () => {
-  const [user] = useState([])  // remove the line--
+  const [user] = useState([]); // remove the line--
 
   // const { user } = useContext(AuthContext);
-  const [selectedOption, setSelectedOption] = useState(null);
+  // const [selectedOption, setSelectedOption] = useState(null);
 
   const {
     register,
@@ -30,17 +31,18 @@ const AddJob = () => {
       });
     console.log(data);
   };
-  const options = [
-    { value: "JavaScript", label: "JavaScript" },
-    { value: "C++", label: "C++" },
-    { value: "HTML", label: "HTML" },
-    { value: "CSS", label: "CSS" },
-    { value: "React", label: "React" },
-    { value: "Node", label: "Node" },
-    { value: "MongoDB", label: "MongoDB" },
-    { value: "Redux", label: "Redux" },
-  ];
+  // const options = [
+  //   { value: "JavaScript", label: "JavaScript" },
+  //   { value: "C++", label: "C++" },
+  //   { value: "HTML", label: "HTML" },
+  //   { value: "CSS", label: "CSS" },
+  //   { value: "React", label: "React" },
+  //   { value: "Node", label: "Node" },
+  //   { value: "MongoDB", label: "MongoDB" },
+  //   { value: "Redux", label: "Redux" },
+  // ];
   //   console.log(user);
+
   return (
     <div className="add-job-container">
       <div className="add-job row">
@@ -96,19 +98,15 @@ const AddJob = () => {
               placeholder="your email"
               type="email"
             />
-            <CreatableSelect
-              className="w-75"
-              defaultValue={selectedOption}
-              onChange={setSelectedOption}
-              options={options}
-              isMulti
-            />
+            
             <input
               className="text-input"
               {...register("description")}
               placeholder="description"
             />
             <input className="submit-btn" value="Post Job" type="submit" />
+            {/* test option */}
+            
           </form>
         </div>
         <div className="col-md-4">
