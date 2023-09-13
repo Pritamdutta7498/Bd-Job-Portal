@@ -98,13 +98,14 @@ const AddJob = () => {
               placeholder="your email"
               type="email"
             />
+            {/* here using creatableSelect */}
             <CreatableSelect
               className="w-75"
               defaultValue={selectedOption}
               onChange={setSelectedOption}
               options={options}
               placeholder="select skill"
-              isMulti
+              isMulti //for multi selection
             />
             <input
               className="text-input"
