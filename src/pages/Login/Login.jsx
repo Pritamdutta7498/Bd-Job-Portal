@@ -8,8 +8,8 @@ import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
 // import { useLocation, useHistory, useNavigate } from "react-router";
 
 const Login = () => {
-  // remove the 12 line
-  const [loginUser] = useState();
+  
+  const [loginUser] = useState();// remove the  line
   // const { loginUser } = useContext(AuthContext);
   // const location = useLocation();
   // const history = useHistory();

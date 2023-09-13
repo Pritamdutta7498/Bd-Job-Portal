@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 import SocialLoginBtn from "./../SocialLoginBtn/SocialLoginBtn";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
+// import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
-  const { registerUser } = useContext(AuthContext);
+  const[registerUser] = useState()//remove the line
+  // const { registerUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -84,7 +85,7 @@ const Register = () => {
             />
           </div>
         </div>
-        <SocialLoginBtn></SocialLoginBtn>
+        <SocialLoginBtn/>
       </div>
     </div>
   );

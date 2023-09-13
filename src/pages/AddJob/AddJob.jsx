@@ -5,8 +5,8 @@ import CreatableSelect from "react-select/creatable";
 // import { AuthContext } from "../../provider/AuthProvider";
 
 const AddJob = () => {
-  // remove the 9th line--
-  const [user] = useState([])
+  const [user] = useState([])  // remove the line--
+
   // const { user } = useContext(AuthContext);
   const [selectedOption, setSelectedOption] = useState(null);
 
