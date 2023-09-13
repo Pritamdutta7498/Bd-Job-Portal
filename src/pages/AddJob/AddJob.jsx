@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./AddJob.css";
 import CreatableSelect from "react-select/creatable";
-import Select from 'react-select';
+// import Select from 'react-select';
 // import { AuthContext } from "../../provider/AuthProvider";
 
 const AddJob = () => {
@@ -17,19 +17,11 @@ const AddJob = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    data.skills = selectedOption;
 
-    fetch("http://localhost:5000/post-job", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+  const onSubmit = (data) => {
     console.log(data);
+    data.skills = selectedOption;//for selected the skill from option
+
   };
   const options = [
     { value: "JavaScript", label: "JavaScript" },
