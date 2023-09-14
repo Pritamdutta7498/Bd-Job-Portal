@@ -21,6 +21,15 @@ const AddJob = () => {
   const onSubmit = (data) => {
     console.log(data);
     data.skills = selectedOption;//for selected the skill from option
+    // send data to server
+    fetch('http://localhost:5000/postJob', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
 
   };
   const options = [
@@ -82,6 +91,7 @@ const AddJob = () => {
               {...register("deadline")}
               placeholder="deadline"
               type="date"
+              title="enter deadline date"
             />
             <input
               className="text-input"
