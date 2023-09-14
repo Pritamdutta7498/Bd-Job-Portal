@@ -85,8 +85,8 @@ const Jobs = () => {
         </div>
       </div>
       <div className="jobs-container mt-5 row">
-        {jobs?.map((job, index) => (
-          <Job job={job} key={index}></Job>
+        {jobs?.map((job) => (
+          <Job key={job._id} job={job}  > </Job>
         ))}
       </div>
     </div>
