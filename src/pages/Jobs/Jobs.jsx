@@ -54,7 +54,12 @@ const Jobs = () => {
         setJob(data);
       });
   }, []);
-  console.log(jobs);
+
+  // don't use this when using useEffect
+  // // jobs filtered by remote or offline
+  // const result = jobs?.filter(job => job.status === activeTab);
+  // // console.log(result);
+  // setJob(result);// but Too many re-renders. React limits the number of renders to prevent an infinite loop
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
