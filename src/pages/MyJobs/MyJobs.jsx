@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useContext } from "react";
 // import { AuthContext } from "../../provider/AuthProvider";
 import Table from "react-bootstrap/Table";
@@ -10,43 +10,23 @@ import Modal from "react-bootstrap/Modal";
 import UpdateJobModal from "../UpdateJobModal/UpdateJobModal"
 
 const MyJobs = () => {
+
   // const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   // const [searchText, setSearchText] = useState("");
-  // const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
   // const [control, setControl] = useState(false);
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/myJobs/${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setJobs(data);
-  //     });
-  // }, [user, control]);
-  // const handleSearch = () => {
-  //   fetch(`http://localhost:5000/getJobsByText/${searchText}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setJobs(data);
-  //     });
-  // };
+  const [user, setTestUser] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:5000/myJob/pritamdutta7498@gmail.com")
+    .then(res=> res.json())
+    .then(data =>{
+      // setJobs(data)
+      setTestUser(data)
+      console.log(data)
+    } )
+  },[]);
 
-  // const handleJobUpdate = (data) => {
-  //   console.log(data);
-  //   fetch(`http://localhost:5000/updateJob/${data._id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(data),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       if (result.modifiedCount > 0) {
-  //         setControl(!control);
-  //       }
-  //       console.log(result);
-  //     });
-  // };
 
   return (
     <div>
@@ -74,7 +54,7 @@ const MyJobs = () => {
             </tr>
           </thead>
           <tbody>
-            {jobs?.map((job, index) => (
+            {user?.map((job, index) => (
               <tr>
                 <td>{index + 1}</td>
                 <td>{job.title}</td>
@@ -89,7 +69,7 @@ const MyJobs = () => {
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     job={job}
-                    handleJobUpdate={handleJobUpdate}
+                    // handleJobUpdate={handleJobUpdate}
                   />
                 </td>
                 <td>

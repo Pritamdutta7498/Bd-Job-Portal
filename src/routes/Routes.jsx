@@ -6,6 +6,8 @@ import AddJob from "../pages/AddJob/AddJob";
 import MyJobs from "../pages/MyJobs/MyJobs";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivetRoutes from "./PrivetRoutes";
+import ServiceDetails from "../pages/ServiceDetails/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -30,24 +32,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/MyJobs",
-        element: <MyJobs/>
+        element: <MyJobs />,
       },
-      //   {
-      //     path: "services/:id",
-      //     element: (
-      //       <PrivateRoute>
-      //         <ServiceDetails></ServiceDetails>
-      //       </PrivateRoute>
-      //     ),
-      //   },
-        {
-          path: "login",
-          element: <Login/>
-        },
-        {
-          path: "register",
-          element: <Register/>
-        },
+      {
+        path: "services/:id",
+        element: (
+          <PrivetRoutes>
+            <ServiceDetails/>
+            
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
     ],
   },
 ]);
