@@ -39,6 +39,7 @@ const Job = ({ job }) => {
           <div className="d-flex justify-content-around">
             <p>vacancy:{vacancy}</p>
             <p>Category: {category}</p>
+            <p>{status}</p>
           </div>
           <div className="text-end">
             <button>

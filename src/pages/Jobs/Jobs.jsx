@@ -40,11 +40,11 @@ const Jobs = () => {
     },
   ];
   const [jobs, setJob] = useState([]);
-  const [activeTab, setActiveTab] = useState("remote");
+  const [activeTab, setActiveTab] = useState("show jobs");
 
   // showing data from server with useEffect
   useEffect(() => {
-    fetch("http://localhost:5000/allJobs", {
+    fetch(`http://localhost:5000/allJobs/${activeTab}`, {
       method: "GET",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(),
@@ -53,13 +53,8 @@ const Jobs = () => {
       .then((data) => {
         setJob(data);
       });
-  }, []);
+  }, [activeTab]);
 
-  // don't use this when using useEffect
-  // // jobs filtered by remote or offline
-  // const result = jobs?.filter(job => job.status === activeTab);
-  // // console.log(result);
-  // setJob(result);// but Too many re-renders. React limits the number of renders to prevent an infinite loop
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
