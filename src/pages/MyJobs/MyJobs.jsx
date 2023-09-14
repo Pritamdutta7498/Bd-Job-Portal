@@ -11,7 +11,7 @@ import UpdateJobModal from "../UpdateJobModal/UpdateJobModal";
 const MyJobs = () => {
   // const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
-  // const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
   // const [control, setControl] = useState(false);
   // const [user, setTestUser] = useState([]); //delete when set user with login!
@@ -27,12 +27,17 @@ let users = 'pritamdutta7498@gmail.com';//delete when create user
         setTestUser(data)
       });
   }, [user]);
+  // search btn implementation
+  const handleSearch = ()=>{
+    console.log(searchText);
+
+  }
 
   return (
     <div>
       <div className="my-jobs-container">
         <h1 className="text-center p-4 ">ALL My Jobs</h1>
-        {/* <div className="search-box p-2 text-center">
+        <div className="search-box p-2 text-center">
           <input
             onChange={(e) => setSearchText(e.target.value)}
             type="text"
@@ -40,46 +45,8 @@ let users = 'pritamdutta7498@gmail.com';//delete when create user
           />{" "}
           
           <button onClick={handleSearch}  >Search</button>
-        </div> */}
-        {/* <Table striped bordered hover className="container">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>vacancy</th>
-              <th>salary</th>
-              <th>Edit</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {user?.map((job, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{job.title}</td>
-                <td>{job.category}</td>
-                <td>{job.vacancy}</td>
-                <td>{job.salary}</td>
-                <td>
-                  <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Edit
-                  </Button>
-                  <UpdateJobModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                    job={job}
-                    // handleJobUpdate={handleJobUpdate}
-                  />
-                </td>
-                <td>
-                  {" "}
-                  <button>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table> */}
+        </div>
+
         {/* my table */}
         <table className="table table-striped container">
           <thead>
