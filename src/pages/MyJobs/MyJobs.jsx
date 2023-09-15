@@ -7,6 +7,7 @@ const MyJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
+  const [control, setControl] = useState(false);
   const [user, setTestUser] = useState([]); //delete when set user with login!
   let users = "pritamdutta7498@gmail.com"; //delete when create user
 
@@ -16,7 +17,7 @@ const MyJobs = () => {
       .then((data) => {
         setJobs(data);
       });
-  }, [user]);
+  }, [user, control]);
   // search btn implementation
   const handleSearch = () => {
     fetch(`http://localhost:5000/jobSearchByTitle/${searchText}`)
@@ -27,7 +28,20 @@ const MyJobs = () => {
   };
   // btn for sending data to updateJobModal
   const handleJobUpdate = (data) => {
-    console.log(data);
+    fetch(`http://localhost:5000/updateJob/${data?._id}`, {
+      method: 'PUT',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if(result.modifiedCount > 0){
+          setControl(!control);
+          console.log(result);
+        }
+      });
+    // console.log(data);
   };
 
   return (

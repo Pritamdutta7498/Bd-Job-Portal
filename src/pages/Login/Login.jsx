@@ -1,19 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
-
-import { useContext } from "react";
 import SocialLoginBtn from "../SocialLoginBtn/SocialLoginBtn";
-// import { AuthContext } from "../../provider/AuthProvider";
-
-// import { useLocation, useHistory, useNavigate } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { useLocation, useNavigate } from "react-router";
 
 const Login = () => {
-  
-  const [loginUser] = useState();// remove the  line
-  // const { loginUser } = useContext(AuthContext);
-  // const location = useLocation();
-  // const history = useHistory();
-  // let navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
+  const location = useLocation();
+  let navigate = useNavigate();
   
 
   const [email, setEmail] = useState("");
@@ -25,7 +20,7 @@ const Login = () => {
       loginUser(email, password)
         .then((result) => {
           console.log(result.user);
-          // navigate("/");
+          navigate("/");
         })
         .catch((error) => {
           console.log(error.message);
@@ -72,8 +67,7 @@ const Login = () => {
               alt=""
             />
           </div>
-          {/* adding social login btn */}
-          <SocialLoginBtn/>
+          <SocialLoginBtn></SocialLoginBtn>
         </div>
       </div>
     </div>
