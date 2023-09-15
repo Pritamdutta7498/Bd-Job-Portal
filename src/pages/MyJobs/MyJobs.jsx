@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import { useContext } from "react";
-// import { AuthContext } from "../../provider/AuthProvider";
-import Table from "react-bootstrap/Table";
-//
 import "./MyJobs.css";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import UpdateJobModal from "../UpdateJobModal/UpdateJobModal";
 
 const MyJobs = () => {
@@ -31,7 +26,7 @@ const MyJobs = () => {
     fetch(`http://localhost:5000/jobSearchByTitle/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
-        setJobs(data);//here showing the search results but without using gmail name
+        setJobs(data); //here showing the search results but without using gmail name
       });
   };
 
@@ -70,15 +65,17 @@ const MyJobs = () => {
                 <td>{job.category}</td>
                 <td>{job.vacancy}</td>
                 <td>{job.salary}</td>
+                {/* using modal for update data */}
                 <td>
                   <Button variant="primary" onClick={() => setModalShow(true)}>
-                    Edit
+                   Update
                   </Button>
+
                   <UpdateJobModal
+                  
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     job={job}
-                    // handleJobUpdate={handleJobUpdate}
                   />
                 </td>
                 <td>
