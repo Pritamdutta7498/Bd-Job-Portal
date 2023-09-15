@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -16,6 +13,7 @@ const UpdateJobModal = (props) => {
 
   const { handleJobUpdate } = props;
   // console.log(handleJobUpdate);
+
   return (
     <Modal
       {...props}
@@ -35,7 +33,6 @@ const UpdateJobModal = (props) => {
         <form
           className="container text-center"
           onSubmit={handleSubmit(handleJobUpdate)}
-          
         >
           {errors.exampleRequired && <span>This field is required</span>}
           {/* job title and salary */}
@@ -52,6 +49,12 @@ const UpdateJobModal = (props) => {
               {...register("salary", { required: true })}
               placeholder="salary"
               defaultValue={props?.job?.salary}
+            />
+            {/* creating a unique id for update data but don't show in modal */}
+            <input
+              className="text-input d-none"
+              {...register("_id")}
+              value={props?.job?._id}
             />
           </div>
           {/* vacancy and category */}
@@ -75,7 +78,10 @@ const UpdateJobModal = (props) => {
           </div>
           {/* place and image link */}
           <div>
-            <select className="text-input border border-primary" {...register("status")}>
+            <select
+              className="text-input border border-primary"
+              {...register("status")}
+            >
               <option value="remote">Remote</option>
               <option value="offline">Offline</option>
             </select>
@@ -97,12 +103,14 @@ const UpdateJobModal = (props) => {
               defaultValue={props?.job?.deadline}
             />
           </div>
-          <input className="submit-btn btn btn-primary" value="Update Job" type="submit" />
+          <input
+            className="submit-btn bg-info btn btn-primary"
+            value="Update Job"
+            type="submit"
+          />
         </form>
       </Modal.Body>
       <Modal.Footer>
-        {/* <Button onClick={props.onHide}>Close</Button> */}
-        {/* <button className="bg-danger">Update</button> */}
       </Modal.Footer>
     </Modal>
   );

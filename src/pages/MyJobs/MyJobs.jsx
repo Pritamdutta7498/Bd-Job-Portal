@@ -4,21 +4,17 @@ import Button from "react-bootstrap/Button";
 import UpdateJobModal from "../UpdateJobModal/UpdateJobModal";
 
 const MyJobs = () => {
-  // const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
-  // const [control, setControl] = useState(false);
   const [user, setTestUser] = useState([]); //delete when set user with login!
   let users = "pritamdutta7498@gmail.com"; //delete when create user
 
   useEffect(() => {
-    // fetch(`http://localhost:5000/myJob/${user?.email}`)//use it when use exist!
     fetch(`http://localhost:5000/myJob/${users}`)
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
-        // setTestUser(data);
       });
   }, [user]);
   // search btn implementation
@@ -28,6 +24,10 @@ const MyJobs = () => {
       .then((data) => {
         setJobs(data); //here showing the search results but without using gmail name
       });
+  };
+  // btn for sending data to updateJobModal
+  const handleJobUpdate = (data) => {
+    console.log(data);
   };
 
   return (
@@ -76,6 +76,7 @@ const MyJobs = () => {
                     show={modalShow}
                     onHide={() => setModalShow(false)}
                     job={job}
+                    handleJobUpdate={handleJobUpdate}
                   />
                 </td>
                 <td>
