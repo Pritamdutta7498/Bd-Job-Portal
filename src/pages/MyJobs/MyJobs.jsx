@@ -14,37 +14,39 @@ const MyJobs = () => {
   const [searchText, setSearchText] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
   // const [control, setControl] = useState(false);
-  // const [user, setTestUser] = useState([]); //delete when set user with login!
   const [user, setTestUser] = useState([]); //delete when set user with login!
-let users = 'pritamdutta7498@gmail.com';//delete when create user
+  let users = "pritamdutta7498@gmail.com"; //delete when create user
 
   useEffect(() => {
     // fetch(`http://localhost:5000/myJob/${user?.email}`)//use it when use exist!
     fetch(`http://localhost:5000/myJob/${users}`)
       .then((res) => res.json())
       .then((data) => {
-        setJobs(data)
-        setTestUser(data)
+        setJobs(data);
+        // setTestUser(data);
       });
   }, [user]);
   // search btn implementation
-  const handleSearch = ()=>{
-    console.log(searchText);
-
-  }
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/jobSearchByTitle/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setJobs(data);//here showing the search results but without using gmail name
+      });
+  };
 
   return (
     <div>
       <div className="my-jobs-container">
         <h1 className="text-center p-4 ">ALL My Jobs</h1>
+        {/* for search the job result */}
         <div className="search-box p-2 text-center">
           <input
             onChange={(e) => setSearchText(e.target.value)}
             type="text"
             className="p-1"
-          />{" "}
-          
-          <button onClick={handleSearch}  >Search</button>
+          />
+          <button onClick={handleSearch}>Search</button>
         </div>
 
         {/* my table */}
@@ -61,7 +63,7 @@ let users = 'pritamdutta7498@gmail.com';//delete when create user
             </tr>
           </thead>
           <tbody>
-            {user?.map((job, index) => (
+            {jobs?.map((job, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{job.title}</td>
